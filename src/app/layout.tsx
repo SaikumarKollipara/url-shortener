@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Shortener",
+  title: "Breaker",
   description: "A very easy url shortener.",
 };
 
