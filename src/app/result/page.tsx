@@ -32,6 +32,7 @@ export default function Result() {
   }
 
   function updateStates(data: any) {
+    console.log(data);
     const shortenedURL = new URL(data.shortenedURL);
     setData(data);
     setAppURL(shortenedURL.origin + "/");
