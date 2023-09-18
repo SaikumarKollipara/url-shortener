@@ -1,20 +1,34 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
-const url = process.env.MONGO_URI as string;
-let connection: typeof mongoose;
-
-const startDB = async () => {
+export default async function connectDB() {
   try {
-    if (!connection) await mongoose.connect(url);
-
-    return connection;
-    console.log(`MongoDB connected`);
+    const MONGO_URI = process.env.MONGODB_URI as string;
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(MONGO_URI);
+      console.log('DB Connected');
+    }
   } catch (error) {
     console.log(error);
-    process.exit(1);
   }
+}
 
-  return connection;
-};
+// import mongoose, { mongo } from 'mongoose';
 
-export default startDB;
+// const url = process.env.MONGO_URI as string;
+// let connection: typeof mongoose;
+
+// const startDB = async () => {
+//   try {
+//     if (!connection) await mongoose.connect(url);
+
+//     return connection;
+//     console.log(`MongoDB connected`);
+//   } catch (error) {
+//     console.log(error);
+//     process.exit(1);
+//   }
+
+//   return connection;
+// };
+
+// export default startDB;
